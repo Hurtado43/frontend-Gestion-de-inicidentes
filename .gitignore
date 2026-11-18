@@ -1,0 +1,17 @@
+target/
+node_modules/
+.idea/
+*.iml
+.vscode/
+
+# Archivos que Vaadin genera en cada compilacion
+src/main/frontend/generated/
+src/main/bundles/
+package.json
+package-lock.json
+pnpm-lock.yaml
+.pnpmfile.cjs
+vite.config.ts
+vite.generated.ts
+tsconfig.json
+types.d.ts
