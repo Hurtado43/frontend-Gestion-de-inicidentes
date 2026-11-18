@@ -1,0 +1,220 @@
+/*
+ * Tema "Sala de control"
+ * Base fria de consola, paneles blancos planos y pizarra para la navegacion.
+ * El color fuerte solo aparece donde significa algo: prioridad, estado y SLA.
+ */
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&display=swap");
+@import "piezas.css";
+
+html {
+  /* Paleta */
+  --sc-pizarra: #18303f;
+  --sc-pizarra-2: #24465a;
+  --sc-consola: #eef2f1;
+  --sc-papel: #ffffff;
+  --sc-linea: #d3dcdb;
+  --sc-tinta: #1d2a31;
+  --sc-tinta-suave: #5b6b72;
+
+  /* Prioridades */
+  --sc-critica: #c8372d;
+  --sc-alta: #e07a1f;
+  --sc-media: #c99a12;
+  --sc-baja: #4c8c6e;
+
+  /* Estados del ciclo de vida */
+  --sc-abierto: #6b7c86;
+  --sc-asignado: #2f6db5;
+  --sc-progreso: #1c8a8a;
+  --sc-espera: #c99a12;
+  --sc-resuelto: #3d8b5a;
+  --sc-cerrado: #8a969c;
+  --sc-cancelado: #a7b0b4;
+
+  /* Lumo */
+  --lumo-font-family: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --lumo-font-size-m: 1rem;
+  --lumo-base-color: var(--sc-consola);
+  --lumo-body-text-color: var(--sc-tinta);
+  --lumo-header-text-color: var(--sc-pizarra);
+  --lumo-secondary-text-color: var(--sc-tinta-suave);
+  --lumo-primary-color: var(--sc-pizarra);
+  --lumo-primary-color-50pct: rgba(24, 48, 63, 0.5);
+  --lumo-primary-color-10pct: rgba(24, 48, 63, 0.1);
+  --lumo-primary-text-color: #1f5a7a;
+  --lumo-error-color: var(--sc-critica);
+  --lumo-success-color: var(--sc-resuelto);
+  --lumo-border-radius-s: 3px;
+  --lumo-border-radius-m: 4px;
+  --lumo-border-radius-l: 6px;
+  --lumo-box-shadow-xs: none;
+  --sc-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+}
+
+body {
+  background: var(--sc-consola);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------ estructura */
+
+vaadin-app-layout::part(drawer) {
+  background: var(--sc-pizarra);
+  border-inline-end: none;
+}
+
+vaadin-app-layout::part(navbar) {
+  background: var(--sc-papel);
+  border-bottom: 1px solid var(--sc-linea);
+  box-shadow: none;
+  min-height: 56px;
+}
+
+.sc-marca {
+  padding: 22px 20px 18px;
+  color: #ffffff;
+}
+
+.sc-marca h1 {
+  font-family: var(--sc-display);
+  font-size: 1.55rem;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  color: #ffffff;
+  letter-spacing: 0.01em;
+}
+
+.sc-marca p {
+  margin: 6px 0 0;
+  font-size: 0.82rem;
+  color: #a9c0cb;
+}
+
+.sc-nav vaadin-side-nav-item {
+  --lumo-primary-text-color: #ffffff;
+  --lumo-body-text-color: #d6e3e8;
+  --lumo-secondary-text-color: #8fb0bd;
+  --lumo-contrast-60pct: #8fb0bd;
+}
+
+.sc-nav vaadin-side-nav-item::part(content) {
+  border-radius: 3px;
+}
+
+.sc-nav vaadin-side-nav-item[current]::part(content) {
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 3px 0 0 #7fd0d0;
+}
+
+.sc-nav {
+  --lumo-contrast-60pct: #8fb0bd;
+  color: #8fb0bd;
+  padding: 0 10px;
+}
+
+.sc-nav-grupo {
+  padding: 18px 20px 4px;
+  font-size: 0.8rem;
+  color: #8fb0bd;
+}
+
+.sc-barra {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding-inline-end: 20px;
+}
+
+.sc-barra h2 {
+  font-family: var(--sc-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sc-conexion {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--sc-tinta-suave);
+}
+
+.sc-conexion::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--sc-resuelto);
+}
+
+.sc-conexion.caida::before {
+  background: var(--sc-critica);
+}
+
+.sc-vista {
+  padding: 24px 28px 40px;
+  max-width: 1400px;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+.sc-panel {
+  background: var(--sc-papel);
+  border: 1px solid var(--sc-linea);
+  border-radius: 4px;
+  padding: 18px 20px;
+  box-sizing: border-box;
+}
+
+.sc-panel h3 {
+  font-family: var(--sc-display);
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0 0 4px;
+}
+
+.sc-panel .sc-ayuda {
+  margin: 0 0 14px;
+  color: var(--sc-tinta-suave);
+  font-size: 0.9rem;
+}
+
+.sc-aviso {
+  border: 1px solid var(--sc-critica);
+  background: #fbeceb;
+  color: #8a231c;
+  padding: 14px 18px;
+  border-radius: 4px;
+}
+
+:focus-visible {
+  outline: 2px solid #2f6db5;
+  outline-offset: 2px;
+}
+
+/* Barra superior compacta en pantallas pequenas (va al final para ganar a las reglas base) */
+@media (max-width: 640px) {
+  .sc-barra { gap: 8px; padding-inline-end: 8px; }
+  .sc-barra h2,
+  .sc-barra .sc-conexion-texto { display: none; }
+  .sc-barra vaadin-combo-box { flex: 1; width: auto !important; min-width: 0; }
+  .sc-conexion { font-size: 0; }
+  .sc-vista { padding: 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
