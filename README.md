@@ -10,6 +10,18 @@ Las historias de usuario que implementa están en [`docs/HISTORIAS-DE-USUARIO.md
 Navegador  ──>  Frontend Vaadin (este proyecto, :8081)  ──HTTP/JSON──>  API Spring Boot (:8080)  ──TCP 27017──>  MongoDB
 ```
 
+## Capturas
+
+| Tablero | Ciclo de vida |
+|---|---|
+| ![Tablero con el mapa de activos que más fallan](docs/capturas/1-tablero.png) | ![Tablero del ciclo de vida con una columna por estado](docs/capturas/2-ciclo.png) |
+| **Ficha del incidente** | **Reportar incidente** |
+| ![Ficha con historial y antecedentes](docs/capturas/3-ficha.png) | ![Formulario para reportar un incidente](docs/capturas/4-reportar.png) |
+| **Recurrencias y tiempos** | **Usuarios y técnicos** |
+| ![Problemas recurrentes y tiempos por prioridad](docs/capturas/5-reportes.png) | ![Carga de trabajo por técnico y usuarios](docs/capturas/6-usuarios.png) |
+| **Arquitectura en vivo** | |
+| ![Capas del sistema y bitácora HTTP](docs/capturas/7-arquitectura.png) | |
+
 ## Pantallas
 
 El menú está organizado como los componentes del diagrama de componentes:
